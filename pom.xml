@@ -5,10 +5,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.rbrugier</groupId>
-    <artifactId>kaggle-word2vec~</artifactId>
+    <artifactId>kaggle-word2vec</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-
+    <repositories>
+        <repository>
+            <id>spark-packages</id>
+            <name>Spark Packages Repository</name>
+            <url>https://dl.bintray.com/spark-packages/maven/</url>
+        </repository>
+    </repositories>
 
     <properties>
         <scala.version>2.10.4</scala.version>
@@ -56,6 +62,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
                 <configuration>
                     <skipTests>true</skipTests>
                 </configuration>
@@ -111,6 +118,14 @@
             <artifactId>scalatest_${scala.dep.version}</artifactId>
             <version>2.2.6</version>
             <scope>test</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/databricks/spark-corenlp -->
+        <dependency>
+            <groupId>databricks</groupId>
+            <artifactId>spark-corenlp</artifactId>
+            <version>0.2.0-s_${scala.dep.version}</version>
         </dependency>
 
         <!-- jsoup HTML parser library @ http://jsoup.org/ -->
