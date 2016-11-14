@@ -7,7 +7,7 @@ import org.apache.spark.sql.functions._
 import org.jsoup.Jsoup
 
 
-object Main {
+object CountVectorizerMain {
 
   val conf = new SparkConf()
     .setAppName("mlpoc")
@@ -40,10 +40,6 @@ object Main {
     var cleanedTraining = cleanData(training)
     cleanedTraining = sentimentToDouble(cleanedTraining)
     val cleanedTest = cleanData(test)
-
-    cleanedTraining = cleanedTraining
-
-    cleanedTraining.printSchema()
 
     val stopWordsRemover = new StopWordsRemover()
       .setInputCol("words")
