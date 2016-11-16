@@ -1,14 +1,11 @@
-import org.apache.spark.ml.Pipeline
-import org.apache.spark.ml.classification.RandomForestClassifier
-import org.apache.spark.ml.feature.{CountVectorizer, StopWordsRemover, Word2Vec}
 import com.databricks.spark.corenlp.functions._
+import org.apache.spark.ml.feature.Word2Vec
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
-import org.jsoup.Jsoup
 
 
-object Word2VecMain {
+object Word2VecTrainerMain {
 
   val conf = new SparkConf()
     .setAppName("mlpoc")
@@ -57,6 +54,8 @@ object Word2VecMain {
       .setMinCount(40)
 
     val model = word2Vec.fit(data)
+
+    model.save("word2vec.model")
 
     model.findSynonyms("music", 10).show(truncate = false)
 

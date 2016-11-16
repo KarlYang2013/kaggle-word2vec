@@ -190,3 +190,4 @@ project/boot/
 ÷
 
 *.tsv
+/word2vec.model/
